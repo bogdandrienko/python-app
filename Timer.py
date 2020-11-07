@@ -1,14 +1,18 @@
 #Импорты
-import time
-
+import time, sys
+from colorama import init, Fore, AnsiToWin32
+init(wrap=False)
+stream = AnsiToWin32(sys.stderr).stream
 #Отрисовка
 def render(sec, min, hour):
-    print(str(hour)+' : '+str(min)+' : '+str(sec))
+    print(Fore.GREEN  + str(hour), Fore.WHITE + ":" , Fore.BLUE + str(min), Fore.WHITE + ":" , Fore.RED + str(sec), file=stream)
+    #print(str(hour)+' : '+str(min)+' : '+str(sec))
 
 #Тик
 def tick(seconds,  multiplayerSeconds):
     seconds = seconds + int(multiplayerSeconds)
     return seconds
+
 #ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
 seconds = float(0)
 minuts = float(0)
